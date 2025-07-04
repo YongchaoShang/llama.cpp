@@ -21,8 +21,8 @@ WORKDIR /app
 COPY . .
 
 # Build llama.cpp using CMake and build the server binary
-RUN cmake -B build -DLLAMA_SERVER=ON . && \
-    cmake --build build --config Release -j 4 && \
+RUN cmake -B build && \
+    cmake --build build --config Release -t llama-server -j 4 && \
     cp build/bin/llama-server /app/llama-server
 
 # Fix ownership so the non-root user can access the files
